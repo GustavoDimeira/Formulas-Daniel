@@ -1,35 +1,69 @@
-
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-        <title>Formulas Daniel</title>
-        <link
-            rel="stylesheet"
-            href="https://pyscript.net/latest/pyscript.css"
-        />
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
 
-        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
-        <link rel="stylesheet" href="./assets/css/examples.css" />
-    </head>
+    <title>Formulas Daniel</title>
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
 
-    <body>
-        <section class="pyscript">
-            <py-tutor modules="./utils.py;./todo.py">
-                <py-config>
-                    packages = ["sympy"]
-                    [[fetch]]
-                    files = ["./todo.py"]
-                </py-config>
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <link rel="stylesheet" href="./assets/css/examples.css" />
+    <link rel="stylesheet" href="main.css">
+</head>
 
-                <py-script src="./todo.py"></py-script>
-            </py-tutor>
-            <main>
-              <div id="variables_inputs"></div>
-              <button py-click="calculate()"> Calcular </button>
-            </main>
-        </section>
-    </body>
+<body>
+    <section class="pyscript">
+        <py-tutor modules="./utils.py;./todo.py">
+            <py-config>
+                packages = ["sympy"]
+                [[fetch]]
+                files = ["./todo.py"]
+            </py-config>
+
+            <py-script src="./todo.py"></py-script>
+        </py-tutor>
+        <main>
+            <div id="variables_wrapper">
+                <div id="first_section" class="section">
+                    <h2>Parte 1: Parametros iniciais</h2>
+                    <label>
+                        <span>Angulo</span>
+                        <select id="angle">
+                            <option value="25">25°</option>
+                            <option value="20">20°</option>
+                        </select>
+                    </label>
+                    <div class="inputs">
+                        <div class="gear"></div>
+                        <div class="pinion"></div>
+                    </div>
+                    <button py-click="calc_first()"> Calcular </button>
+                    <div class="calculated_values"></div>
+                </div>
+                <div id="second_section" class="section">
+                    <h2>Parte 2: Tensão de Flexão & Tennsão Superficial</h2>
+                    <div class="inputs">
+                        <div class="gear"></div>
+                        <div class="pinion"></div>
+                        <div class="extra"></div>
+                    </div>
+                    <button py-click="calc_second()"> Calcular </button>
+                    <div class="calculated_values"></div>
+                </div>
+                <div id="third_section" class="section">
+                    <h2>Parte 3: Resistência a Fadiga</h2>
+                    <div class="inputs">
+                        <div class="gear"></div>
+                        <div class="pinion"></div>
+                    </div>
+                    <button py-click="calc_third()"> Calcular </button>
+                    <div class="calculated_values"></div>
+                </div>
+            </div>
+        </main>
+    </section>
+</body>
+
 </html>
