@@ -333,8 +333,11 @@ def calc_second():
         elements = document.querySelectorAll("#second_section input")
         counter = 0
 
-        mg = 10 #arrumar
-        mp = 10 #arrumar
+        value_g = document.querySelector("#var-mᵍ input").value
+        value_p = document.querySelector("#var-mᵖ input").value
+
+        mg = float(value_g) if (value_g) else float(document.querySelectorAll("#row-mᵍ td")[1].innerHTML)
+        mp = float(value_p) if (value_p) else float(document.querySelectorAll("#row-mᵖ td")[1].innerHTML)
 
         Fᵍ, Jᵍ, Qvᵍ, Vtᵍ, trᵍ, rpmᵍ, potᵍ = variables_g_2
         Fᵖ, Jᵖ, Qvᵖ, Vtᵖ, trᵖ, rpmᵖ, potᵖ = variables_p_2
@@ -389,16 +392,16 @@ def calc_second():
         Aᵍ = 50 + 56 * (1 - Bᵍ)
         val_1ᵍ = document.querySelector("#gear-select .motor").value
         val_2ᵍ = document.querySelector("#gear-select .moveable").value
-        adendo_g = float(document.querySelectorAll("#row-adendo td")[1].innerHTML) #arrumar
-        dedendo_g = float(document.querySelectorAll("#row-dedendo td")[1].innerHTML) #arrumar
+        adendo_g = float(document.querySelectorAll("#table_values .gear #row-adendo td")[1].innerHTML) 
+        dedendo_g = float(document.querySelectorAll("#table_values .gear #row-dedendo td")[1].innerHTML)
         mbᵍ = trᵍ / (adendo_g + dedendo_g)
 
         Bᵖ = ((12 / Qvᵖ) ** (2/3)) / 4
         Aᵖ = 50 + 56 * (1 - Bᵖ)
         val_1ᵖ = document.querySelector("#pinion-select .motor").value
         val_2ᵖ = document.querySelector("#pinion-select .moveable").value
-        adendo_p = float(document.querySelectorAll("#row-adendo td")[1].innerHTML) #arrumar
-        dedendo_p = float(document.querySelectorAll("#row-dedendo td")[1].innerHTML) #arrumar
+        adendo_p = float(document.querySelectorAll("#table_values .pinion #row-adendo td")[1].innerHTML)
+        dedendo_p = float(document.querySelectorAll("#table_values .pinion #row-dedendo td")[1].innerHTML)
         mbᵖ = trᵖ / (adendo_p + dedendo_p)
 
         kvᵍ = (Aᵍ / (Aᵍ + ((200 * Vtᵍ) ** 1/2))) ** Bᵍ
@@ -536,9 +539,9 @@ def calc_second():
 
         θ = int(document.querySelector("#angle").value)
         C = float(document.querySelector("#centers").innerHTML)
-        Pdᵖ = float(document.querySelectorAll("#row-Pdᵖ td")[1].innerHTML)
-        dᵍ = float(document.querySelectorAll("#row-dᵍ td")[1].innerHTML)
-        dᵖ = float(document.querySelectorAll("#row-dᵖ td")[1].innerHTML)
+        Pdᵖ = float(document.querySelectorAll("#row-Pdᵖ td")[1].innerHTML) if (document.querySelectorAll("#row-Pdᵖ td")) else float(document.querySelector("#var-Pdᵖ input").value)
+        dᵍ = float(document.querySelectorAll("#row-dᵍ td")[1].innerHTML) if (document.querySelectorAll("#row-dᵍ td")) else float(document.querySelector("#var-dᵍ input").value)
+        dᵖ = float(document.querySelectorAll("#row-dᵖ td")[1].innerHTML) if (document.querySelectorAll("#row-dᵖ td")) else float(document.querySelector("#var-dᵖ input").value)
 
         Pᵖ = ((rᵖ + 1 / Pdᵖ) ** 2 - (rᵖ * sp.cos(θ)) ** 2) ** (1/2) - (sp.pi / Pdᵖ) * sp.cos(θ)
         Pᵍ = C * sp.sin(θ) + (pos + Pᵖ)

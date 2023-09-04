@@ -65,6 +65,7 @@ table tbody tr {
   display: flex;
   flex-wrap: wrap;
   overflow-x: auto;
+  margin: 10px;
 }
 
 .inputs input {
@@ -76,4 +77,14 @@ table tbody tr {
 
 .extra {
   width: 33vw;
+}
+
+button {
+  padding: 5px;
+  margin: 10px;
+  border: black solid 2px;
+  border-radius: 5px;
+  justify-self: center;
+  align-self: center;
+  width: 98%;
 }
